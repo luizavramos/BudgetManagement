@@ -18,7 +18,6 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_category")
-@NoArgsConstructor
 public class Category {
 
 	@Id

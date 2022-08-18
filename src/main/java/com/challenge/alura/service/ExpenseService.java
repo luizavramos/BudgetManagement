@@ -21,6 +21,10 @@ public class ExpenseService {
 	@Autowired
 	ExpenseRepository expenseRepository;
 	
+	public ExpenseService(ExpenseRepository repository) {
+		this.expenseRepository = repository;
+	}
+
 	public Expense postExpense (Expense expense) throws Exception {
 		
 		isValidDescription(expense);
@@ -51,17 +55,17 @@ public class ExpenseService {
 		return ResponseEntity.ok(expenseRepository.findAll());
 	}
 
-	public ResponseEntity<Expense> getById(@PathVariable long id){
+	public ResponseEntity<Expense> getById( long id){
 		return expenseRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
 	}
 	
-	public ResponseEntity<Expense> putExpense(@PathVariable("id") Long id, Expense input) throws Exception{
+	public ResponseEntity<Expense> putExpense( Long id, Expense input) throws Exception{
 		
-			isValidDescription(input);
+		isValidDescription(input);
 			
-			if(input.getCategory() == null)
-				input.setCategory(getCategoryDefault());
+		if(input.getCategory() == null)
+			input.setCategory(getCategoryDefault());
 		
 		return expenseRepository.findById(id).map(resposta -> {
 			input.setId(id);
@@ -70,7 +74,7 @@ public class ExpenseService {
 		
 	}
 
-	public void delete(@PathVariable Long id) {
+	public void delete( Long id) {
 		Optional<Expense> expense = expenseRepository.findById(id);
 		
 		if(expense.isEmpty())
@@ -80,11 +84,11 @@ public class ExpenseService {
 	}
 
 	
-	public ResponseEntity<List<Expense>> getByDescription( @PathVariable String description){
+	public ResponseEntity<List<Expense>> getByDescription( String description){
 		return ResponseEntity.ok(expenseRepository.findAllByDescriptionContainingIgnoreCase(description));
 	}
 
-	public ResponseEntity<List<Expense>> getByMonth(@PathVariable int year, @PathVariable int month){
+	public ResponseEntity<List<Expense>> getByMonth( int year,  int month){
 		LocalDate minDate = LocalDate.of(year, month, 1);
 		LocalDate maxDate = LocalDate.of(year, month, minDate.lengthOfMonth());
 		

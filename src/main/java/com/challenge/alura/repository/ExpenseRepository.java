@@ -16,7 +16,7 @@ public interface ExpenseRepository extends JpaRepository<Expense, Long>{
 
 	List<Expense> findAllByDateBetween(LocalDate start, LocalDate end);
 
-	public List<Expense> findAllByDescriptionContainingIgnoreCase(@Param("description")String description);
+	public List<Expense> findAllByDescriptionContainingIgnoreCase(@Param("description") String description);
 	
 	@Query (value = "select sum(r.value) from Expense r " +
             "where r.date BETWEEN :firstDay AND :lastDay")
