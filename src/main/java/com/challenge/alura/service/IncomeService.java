@@ -20,7 +20,11 @@ public class IncomeService {
 	
 	@Autowired
 	IncomeRepository incomeRepository;
-	
+
+	public IncomeService(IncomeRepository repository) {
+		this.incomeRepository = repository;
+	}
+
 	public Income postIncome(Income input) throws Exception {
 		
 		isValidDescription(input);
@@ -33,13 +37,13 @@ public class IncomeService {
 	}
 	
 
-	public ResponseEntity<Income> getById(@PathVariable long id){
+	public ResponseEntity<Income> getById( long id){
 		return incomeRepository.findById(id).map(resposta -> ResponseEntity.ok(resposta)).orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 
 	}
 	
 
-	public ResponseEntity<Income> put(@PathVariable("id") Long id, Income input) throws Exception{
+	public ResponseEntity<Income> put(Long id, Income input) throws Exception{
 		
 		isValidDescription(input);
 		
@@ -60,7 +64,7 @@ public class IncomeService {
 		}
 	}
 	
-	public void delete(@PathVariable Long id) {
+	public void delete( Long id) {
 		Optional<Income> income = incomeRepository.findById(id);
 		
 		if(income.isEmpty())
@@ -69,11 +73,11 @@ public class IncomeService {
 		incomeRepository.deleteById(id);
 	}
 	
-	public ResponseEntity<List<Income>> getByDescription( @PathVariable String description){
+	public ResponseEntity<List<Income>> getByDescription(  String description){
 		return ResponseEntity.ok(incomeRepository.findAllByDescriptionContainingIgnoreCase(description));
 	}
 	
-	public ResponseEntity<List<Income>> getByMonthIncome(@PathVariable int year, @PathVariable int month){
+	public ResponseEntity<List<Income>> getByMonthIncome( int year,  int month){
 		LocalDate minDate = LocalDate.of(year, month, 1);
 		LocalDate maxDate = LocalDate.of(year, month, minDate.lengthOfMonth());
 		

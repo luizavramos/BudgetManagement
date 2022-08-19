@@ -17,8 +17,6 @@ import com.challenge.alura.repository.ExpenseRepository;
 
 @Service
 public class ExpenseService {
-
-	@Autowired
 	ExpenseRepository expenseRepository;
 	
 	public ExpenseService(ExpenseRepository repository) {

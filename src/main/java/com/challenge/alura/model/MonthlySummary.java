@@ -3,7 +3,11 @@ package com.challenge.alura.model;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class MonthlySummary {
 	
 	@JsonProperty
@@ -23,8 +27,10 @@ public class MonthlySummary {
 	
 	@JsonProperty
 	List<ValueCategory> valueCategory;
-	
 
+	public MonthlySummary(){
+
+	}
 	public MonthlySummary(List<Income> incomes, List<Expense> expenses, Double totalValueExpense, Double totalValueReceipt, Double balance, List<ValueCategory> aux) {
 		this.incomes = incomes;
 		this.expenses = expenses;

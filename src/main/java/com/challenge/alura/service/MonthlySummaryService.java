@@ -16,18 +16,22 @@ import com.challenge.alura.repository.IncomeRepository;
 @Service
 public class MonthlySummaryService {
 
-	@Autowired
 	IncomeService incomeService;
-	
-	@Autowired
 	ExpenseService expenseService;
-	
-	@Autowired
 	ExpenseRepository expenseRepository;
-	
-	@Autowired
 	IncomeRepository incomeRepository;
-	
+
+	public MonthlySummaryService(IncomeService incomeService, ExpenseService expenseService, ExpenseRepository expenseRepository, IncomeRepository incomeRepository) {
+		this.incomeService = incomeService;
+		this.expenseService = expenseService;
+		this.expenseRepository = expenseRepository;
+		this.incomeRepository = incomeRepository;
+	}
+
+	public MonthlySummaryService(){
+
+	}
+
 
 	public MonthlySummary getSummary(Integer year, Integer month){
 			
@@ -39,6 +43,7 @@ public class MonthlySummaryService {
         Double balances = sumIncome - sumExpenses;
         
         List<ValueCategory> aux = expenseRepository.countTotalDespesaByCategoryBetweenData(first, last);
+
 		return new MonthlySummary (
 				incomeService.getByMonthIncome(year, month).getBody(),
 				expenseService.getByMonth(year, month).getBody(),

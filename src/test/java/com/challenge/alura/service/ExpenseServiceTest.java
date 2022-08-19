@@ -1,27 +1,24 @@
 package com.challenge.alura.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.Mockito.*;
+import com.challenge.alura.model.Category;
+import com.challenge.alura.model.Expense;
+import com.challenge.alura.repository.ExpenseRepository;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.Assert;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.challenge.alura.model.Category;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.function.Executable;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.springframework.http.ResponseEntity;
-import org.springframework.util.Assert;
-
-import com.challenge.alura.model.Expense;
-import com.challenge.alura.repository.ExpenseRepository;
-import org.springframework.web.server.ResponseStatusException;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.mockito.Mockito.*;
 
 
 public class ExpenseServiceTest {
@@ -110,7 +107,7 @@ public class ExpenseServiceTest {
 	@Test
 	void getByMonthZero() {
 		when(repository.findAllByDateBetween(Mockito.any(), Mockito.any()))
-				.thenReturn(new ArrayList<Expense>());
+				.thenReturn(new ArrayList<>());
 
 		ResponseEntity<List<Expense>> answer = service.getByMonth(2022, 8);
 
@@ -262,6 +259,7 @@ public class ExpenseServiceTest {
 		service.delete(anyLong());
 		assertThrows(ResponseStatusException.class, () -> service.delete(null));
 	}
+
 	private ArrayList getExpensesList(String description, String description2) {
 
 		ArrayList<Expense> expenses = new ArrayList<Expense>();

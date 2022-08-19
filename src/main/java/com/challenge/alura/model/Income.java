@@ -33,6 +33,16 @@ public class Income {
 	//@Temporal(TemporalType.DATE)
 	private LocalDate date;
 
+	public Income(long id, String description, double value, LocalDate date) {
+		this.id = id;
+		this.description = description;
+		this.value = value;
+		this.date = date;
+	}
+	public Income(){
+
+	}
+
 	public long getId() {
 		return id;
 	}
