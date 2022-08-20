@@ -1,7 +1,6 @@
-package com.challenge.alura.controller;
+package com.budget.management.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -16,12 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.challenge.alura.model.Income;
-import com.challenge.alura.service.IncomeService;
+import com.budget.management.model.Income;
+import com.budget.management.service.IncomeService;
 
 @RestController
 @RequestMapping("/income")

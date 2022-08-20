@@ -1,4 +1,4 @@
-package com.challenge.alura.model;
+package com.budget.management.model;
 
 import java.math.BigDecimal;
 

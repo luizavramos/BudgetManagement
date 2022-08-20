@@ -1,4 +1,4 @@
-package com.challenge.alura.model;
+package com.budget.management.model;
 
 import java.time.LocalDate;
 
@@ -14,10 +14,14 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_expense")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Expense {
@@ -39,49 +43,5 @@ public class Expense {
 	@ManyToOne
 	@JsonIgnoreProperties("expense")
 	private Category category;
-	
 
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public double getValue() {
-		return value;
-	}
-
-	public void setValue(double value) {
-		this.value = value;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
-	
-	
-	
 }

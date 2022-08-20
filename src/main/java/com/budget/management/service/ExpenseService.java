@@ -1,19 +1,17 @@
-package com.challenge.alura.service;
+package com.budget.management.service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.budget.management.repository.ExpenseRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.challenge.alura.model.Category;
-import com.challenge.alura.model.Expense;
-import com.challenge.alura.repository.ExpenseRepository;
+import com.budget.management.model.Category;
+import com.budget.management.model.Expense;
 
 @Service
 public class ExpenseService {

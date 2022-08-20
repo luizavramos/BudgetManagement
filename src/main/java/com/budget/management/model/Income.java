@@ -1,4 +1,9 @@
-package com.challenge.alura.model;
+package com.budget.management.model;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -13,9 +18,12 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
 @Entity
 @Table(name = "tb_income")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Income {
 	
 	@Id
@@ -33,47 +41,4 @@ public class Income {
 	//@Temporal(TemporalType.DATE)
 	private LocalDate date;
 
-	public Income(long id, String description, double value, LocalDate date) {
-		this.id = id;
-		this.description = description;
-		this.value = value;
-		this.date = date;
-	}
-	public Income(){
-
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public double getValue() {
-		return value;
-	}
-
-	public void setValue(double value) {
-		this.value = value;
-	}
-
-	public LocalDate getDate() {
-		return date;
-	}
-
-	public void setDate(LocalDate date) {
-		this.date = date;
-	}
-
-	
 }

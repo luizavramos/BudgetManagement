@@ -1,4 +1,4 @@
-package com.challenge.alura.repository;
+package com.budget.management.repository;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.challenge.alura.model.Expense;
-import com.challenge.alura.model.ValueCategory;
+import com.budget.management.model.Expense;
+import com.budget.management.model.ValueCategory;
 
 
 public interface ExpenseRepository extends JpaRepository<Expense, Long>{

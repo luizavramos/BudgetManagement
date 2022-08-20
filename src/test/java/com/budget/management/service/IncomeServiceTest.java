@@ -1,11 +1,7 @@
-package com.challenge.alura.service;
+package com.budget.management.service;
 
-import com.challenge.alura.model.Category;
-import com.challenge.alura.model.Expense;
-import com.challenge.alura.model.Income;
-import com.challenge.alura.repository.ExpenseRepository;
-import com.challenge.alura.repository.IncomeRepository;
-import org.junit.jupiter.api.Assertions;
+import com.budget.management.model.Income;
+import com.budget.management.repository.IncomeRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

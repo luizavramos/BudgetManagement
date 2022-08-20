@@ -1,4 +1,4 @@
-package com.challenge.alura.model;
+package com.budget.management.model;
 
 import java.util.List;
 
@@ -14,10 +14,17 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "tb_category")
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 
 	@Id
@@ -34,49 +41,5 @@ public class Category {
 	@OneToMany(mappedBy = "category" , cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("category")
 	private List<Expense> expense;
-	
-	
-	public Category() {
-		
-	}
 
-	public Category(Long id, List<Expense> expense) {
-		this.id = id;
-		this.expense = expense;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public List<Expense> getExpense() {
-		return expense;
-	}
-
-	public void setExpense(List<Expense> expense) {
-		this.expense = expense;
-	}
-
-	
-	
 }

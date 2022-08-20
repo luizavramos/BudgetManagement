@@ -1,25 +1,24 @@
-package com.challenge.alura.service;
+package com.budget.management.service;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
+import com.budget.management.repository.IncomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.challenge.alura.model.Income;
-import com.challenge.alura.repository.IncomeRepository;
+import com.budget.management.model.Income;
 
 
 @Service
 public class IncomeService {
 	
 	@Autowired
-	IncomeRepository incomeRepository;
+    IncomeRepository incomeRepository;
 
 	public IncomeService(IncomeRepository repository) {
 		this.incomeRepository = repository;

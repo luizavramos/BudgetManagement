@@ -1,10 +1,9 @@
-package com.challenge.alura.service;
+package com.budget.management.service;
 
-import com.challenge.alura.model.Category;
-import com.challenge.alura.model.Expense;
-import com.challenge.alura.model.Income;
-import com.challenge.alura.model.MonthlySummary;
-import org.junit.jupiter.api.Assertions;
+import com.budget.management.model.Category;
+import com.budget.management.model.Income;
+import com.budget.management.model.MonthlySummary;
+import com.budget.management.model.Expense;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

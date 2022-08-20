@@ -1,4 +1,4 @@
-package com.challenge.alura;
+package com.budget.management;
 
 import org.junit.jupiter.api.Test;
 

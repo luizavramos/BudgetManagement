@@ -1,4 +1,4 @@
-package com.challenge.alura.controller;
+package com.budget.management.controller;
 
 import java.util.List;
 
@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.challenge.alura.model.Expense;
-import com.challenge.alura.service.ExpenseService;
+import com.budget.management.model.Expense;
+import com.budget.management.service.ExpenseService;
 
 @RestController
 @RequestMapping("/expense")

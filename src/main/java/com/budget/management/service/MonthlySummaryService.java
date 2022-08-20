@@ -1,17 +1,16 @@
-package com.challenge.alura.service;
+package com.budget.management.service;
 
 import java.time.LocalDate;
 import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.budget.management.repository.ExpenseRepository;
+import com.budget.management.repository.IncomeRepository;
 import org.springframework.stereotype.Service;
 
-import com.challenge.alura.model.MonthlySummary;
-import com.challenge.alura.model.ValueCategory;
-import com.challenge.alura.repository.ExpenseRepository;
-import com.challenge.alura.repository.IncomeRepository;
- 
+import com.budget.management.model.MonthlySummary;
+import com.budget.management.model.ValueCategory;
+
 
 @Service
 public class MonthlySummaryService {
