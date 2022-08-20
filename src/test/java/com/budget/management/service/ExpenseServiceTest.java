@@ -1,5 +1,6 @@
 package com.budget.management.service;
 
+import com.budget.management.Mocks;
 import com.budget.management.model.Category;
 import com.budget.management.repository.ExpenseRepository;
 import com.budget.management.model.Expense;
@@ -56,7 +57,7 @@ public class ExpenseServiceTest {
 	void getAllSuccess() {
 
 		when(repository.findAll())
-				.thenReturn(getExpensesList("Test","Test 2"));
+				.thenReturn(Mocks.getExpenseList(2));
 
 		ResponseEntity<List<Expense>> answer = service.getAll();
 		assertEquals(2, answer.getBody().size());
@@ -75,9 +76,9 @@ public class ExpenseServiceTest {
 	void getByDescriptionSuccess() {
 
 		when(repository.findAllByDescriptionContainingIgnoreCase(Mockito.anyString()))
-				.thenReturn(getExpensesList("Test","Test 2"));
+				.thenReturn(Mocks.getExpenseList(2));
 
-		ResponseEntity<List<Expense>> answer = service.getByDescription("Test");
+		ResponseEntity<List<Expense>> answer = service.getByDescription("description");
 
 		assertEquals(2, answer.getBody().size());
 
@@ -97,7 +98,7 @@ public class ExpenseServiceTest {
 	@Test
 	void getByMonthSuccess() {
 		when(repository.findAllByDateBetween(Mockito.any(), Mockito.any()))
-				.thenReturn(getExpensesList("Test", "Test 2"));
+				.thenReturn(Mocks.getExpenseList(2));
 
 		ResponseEntity<List<Expense>> answer = service.getByMonth(2022, 8);
 
@@ -142,10 +143,10 @@ public class ExpenseServiceTest {
 		Expense expense = Mockito.mock(Expense.class);
 
 		when(expense.getDate()).thenReturn(LocalDate.now());
-		when(expense.getDescription()).thenReturn("not null");
+		when(expense.getDescription()).thenReturn("description");
 
 		when(repository.findAllByDateBetween(Mockito.any(), Mockito.any()))
-				.thenReturn(getExpensesList("not null", "not null"));
+				.thenReturn(Mocks.getExpenseList(2));
 
 		assertThrows(Exception.class, () -> service.postExpense(expense));
 	}
@@ -204,10 +205,10 @@ public class ExpenseServiceTest {
 		Expense expense = Mockito.mock(Expense.class);
 
 		when(expense.getDate()).thenReturn(LocalDate.now());
-		when(expense.getDescription()).thenReturn("not null");
+		when(expense.getDescription()).thenReturn("description");
 
 		when(repository.findAllByDateBetween(Mockito.any(), Mockito.any()))
-				.thenReturn(getExpensesList("not null", "not null"));
+				.thenReturn(Mocks.getExpenseList(2));
 
 		assertThrows(Exception.class, () -> service.putExpense(1L, expense));
 	}
@@ -260,17 +261,5 @@ public class ExpenseServiceTest {
 		assertThrows(ResponseStatusException.class, () -> service.delete(null));
 	}
 
-	private ArrayList getExpensesList(String description, String description2) {
-
-		ArrayList<Expense> expenses = new ArrayList<Expense>();
-
-		expenses.add(
-				new Expense(0, description, 10.0, LocalDate.now(), new Category()));
-		expenses.add(
-				new Expense(0, description2, 10.0, LocalDate.now(), new Category()));
-
-		return expenses;
-
-	}
 }
 

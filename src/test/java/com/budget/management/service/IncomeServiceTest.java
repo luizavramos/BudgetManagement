@@ -1,5 +1,6 @@
 package com.budget.management.service;
 
+import com.budget.management.Mocks;
 import com.budget.management.model.Income;
 import com.budget.management.repository.IncomeRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +36,7 @@ public class IncomeServiceTest {
     @Test
     void getAllSuccess(){
 
-        when(repository.findAll()).thenReturn(getIncomeList());
+        when(repository.findAll()).thenReturn(Mocks.getIncomeList(2));
 
         ResponseEntity<List<Income>> answer = service.getAll();
 
@@ -72,9 +73,9 @@ public class IncomeServiceTest {
     @Test
     void getByDescriptionSuccess(){
         when(repository.findAllByDescriptionContainingIgnoreCase(Mockito.anyString()))
-                .thenReturn(getIncomeList());
+                .thenReturn(Mocks.getIncomeList(2));
 
-        ResponseEntity<List<Income>> answer = service.getByDescription("Test");
+        ResponseEntity<List<Income>> answer = service.getByDescription("description");
 
         assertEquals(2, answer.getBody().size());
     }
@@ -92,7 +93,7 @@ public class IncomeServiceTest {
     @Test
     void getByMonthSuccess(){
         when(repository.findAllByDateBetween(Mockito.any(), Mockito.any()))
-                .thenReturn(getIncomeList());
+                .thenReturn(Mocks.getIncomeList(2));
         ResponseEntity<List<Income>> answer = service.getByMonthIncome(2022,8);
 
         assertEquals(2, answer.getBody().size());
@@ -155,13 +156,13 @@ public class IncomeServiceTest {
         Income income = Mockito.mock(Income.class);
 
         when(income.getDate()).thenReturn(LocalDate.now());
-        when(income.getDescription()).thenReturn("Test");
+        when(income.getDescription()).thenReturn("description");
 
         when(repository.save(Mockito.any()))
                 .thenReturn(income);
 
         when(repository.findAllByDateBetween(Mockito.any(), Mockito.any()))
-                .thenReturn(getIncomeList());
+                .thenReturn(Mocks.getIncomeList(2));
 
         assertThrows(Exception.class, () -> service.postIncome(income));
     }
@@ -192,28 +193,15 @@ public class IncomeServiceTest {
         Income income = Mockito.mock(Income.class);
 
         when(income.getDate()).thenReturn(LocalDate.now());
-        when(income.getDescription()).thenReturn("Test");
+        when(income.getDescription()).thenReturn("description");
 
         when(repository.save(Mockito.any()))
                 .thenReturn(income);
 
         when(repository.findAllByDateBetween(Mockito.any(), Mockito.any()))
-                .thenReturn(getIncomeList());
+                .thenReturn(Mocks.getIncomeList(2));
 
         assertThrows(Exception.class, () -> service.put(1L, income));
     }
 
-
-    private ArrayList getIncomeList() {
-
-        ArrayList<Income> incomes = new ArrayList<Income>();
-
-        incomes.add(
-                new Income(0, "Test", 10.0, LocalDate.now()));
-        incomes.add(
-                new Income(0, "Test 2", 10.0, LocalDate.now()));
-
-        return incomes;
-
-    }
 }

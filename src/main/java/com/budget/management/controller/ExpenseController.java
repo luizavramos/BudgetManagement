@@ -26,9 +26,13 @@ import com.budget.management.service.ExpenseService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ExpenseController {
 
-	@Autowired 
-	private ExpenseService expenseService;
-	
+
+	 ExpenseService expenseService;
+
+	public ExpenseController(ExpenseService expenseService) {
+		this.expenseService = expenseService;
+	}
+
 	@PostMapping
 	public ResponseEntity<Expense> post(@Valid @RequestBody Expense expense) throws Exception{
 		return ResponseEntity.status(HttpStatus.CREATED).body(expenseService.postExpense(expense));

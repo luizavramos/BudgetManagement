@@ -1,4 +1,4 @@
-package com.budget.management.service;
+package com.budget.management;
 
 import com.budget.management.model.Category;
 import com.budget.management.model.Income;
@@ -11,18 +11,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Asserts {
     @Test
     public static void assertExpense(Expense expense){
-        Expense expenseDefault = new Expense();
+        Expense expenseDefault = Mocks.getExpense();
 
-        assertEquals(expenseDefault.getCategory(), expense.getCategory());
+        assertCategory(expense.getCategory());
         assertEquals(expenseDefault.getDate(), expense.getDate());
         assertEquals(expenseDefault.getDescription(), expense.getDescription());
         assertEquals(expenseDefault.getId(), expense.getId());
         assertEquals(expenseDefault.getValue(), expense.getValue());
 
     }
+
+
     @Test
     public static void assertExpenseWithNewMonth(Expense expense) {
-        Expense expenseDefault = new Expense();
+        Expense expenseDefault = Mocks.getExpense();
 
         expenseDefault.getDate();
 
@@ -44,7 +46,7 @@ public class Asserts {
     }
     @Test
     public static void assertCategory(Category category){
-        Category categoryDefault = new Category();
+        Category categoryDefault = Mocks.getCategory();
 
         assertEquals(categoryDefault.getDescription(), category.getDescription());
         assertEquals(categoryDefault.getName(), category.getName());

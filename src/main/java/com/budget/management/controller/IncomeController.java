@@ -26,10 +26,13 @@ import com.budget.management.service.IncomeService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class IncomeController {
 
-	
-	@Autowired 
-	private IncomeService incomeService;
-	
+
+	IncomeService incomeService;
+
+	public IncomeController(IncomeService incomeService) {
+		this.incomeService = incomeService;
+	}
+
 	@PostMapping
 	public ResponseEntity<Income> post(@Valid @RequestBody Income income) throws Exception{
 		return ResponseEntity.status(HttpStatus.CREATED).body(incomeService.postIncome(income));
