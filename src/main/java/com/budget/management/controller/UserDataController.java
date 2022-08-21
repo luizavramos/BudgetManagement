@@ -18,12 +18,15 @@ import java.util.Optional;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserDataController {
 
-    @Autowired
     private UserDataService service;
 
-    @Autowired
+
     private UserDataRepository repository;
 
+    public UserDataController(UserDataService service, UserDataRepository repository) {
+        this.service = service;
+        this.repository = repository;
+    }
     @GetMapping("/all")
     public ResponseEntity <List<UserData>> getAll() {
         return ResponseEntity.ok(repository.findAll());
@@ -37,8 +40,7 @@ public class UserDataController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<UserLogin> autenticationUser(
-            @RequestBody Optional<UserLogin> user) {
+    public ResponseEntity<UserLogin> authenticationUser(@RequestBody Optional<UserLogin> user) {
         return service.loginUser(user)
                 .map(resp -> ResponseEntity.ok(resp))
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());

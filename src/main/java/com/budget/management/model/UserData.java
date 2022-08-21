@@ -41,7 +41,13 @@ public class UserData {
     private List<Income> income;
 
 
+    public UserData(Long id, String name, String user, String password) {
+        this.id = id;
+        this.name = name;
+        this.user = user;
+        this.password = password;
+    }
 
-
-
+    public UserData() {
+    }
 }

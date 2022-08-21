@@ -13,4 +13,14 @@ public class UserLogin {
     private String password;
     private String token;
 
+    public UserLogin(Long id, String name, String user, String password, String token) {
+        this.id = id;
+        this.name = name;
+        this.user = user;
+        this.password = password;
+        this.token = token;
+    }
+    public UserLogin(){
+
+    }
 }
