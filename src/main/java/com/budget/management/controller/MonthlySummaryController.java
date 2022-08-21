@@ -16,9 +16,12 @@ import com.budget.management.service.MonthlySummaryService;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class MonthlySummaryController {
 
-	@Autowired
 	MonthlySummaryService monthlySummaryService;
-	
+
+	public MonthlySummaryController(MonthlySummaryService monthlySummaryService) {
+		this.monthlySummaryService = monthlySummaryService;
+	}
+
 	@GetMapping(path = "{year}/{month}")
 	public ResponseEntity<MonthlySummary> getMonthlySummary(@PathVariable Integer month, @PathVariable Integer year){
 
