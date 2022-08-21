@@ -11,11 +11,11 @@ import java.util.List;
 public class Mocks {
 
     public static Expense getExpense(){
-        return new Expense(0, "description", 10.0, LocalDate.now(), getCategory());
+        return new Expense(0L, "description", 10.0, LocalDate.now(), getCategory());
     }
 
     public static Income getIncome(){
-        return new Income(0, "description", 10.0, LocalDate.now());
+        return new Income(0L, "description", 10.0, LocalDate.now());
     }
 
     public static List<Expense> getExpenseList(int size){

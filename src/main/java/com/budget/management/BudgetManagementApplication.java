@@ -6,7 +6,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories
-public class BudgetManagementApplication {
+public class
+BudgetManagementApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BudgetManagementApplication.class, args);

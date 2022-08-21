@@ -44,4 +44,16 @@ public class Expense {
 	@JsonIgnoreProperties("expense")
 	private Category category;
 
+	@ManyToOne
+	@JsonIgnoreProperties("expense")
+	private UserData userData;
+
+	public Expense(long id, String description, double value, LocalDate date, Category category) {
+		this.id = id;
+		this.description = description;
+		this.value = value;
+		this.date = date;
+		this.category = category;
+		this.userData = userData;
+	}
 }

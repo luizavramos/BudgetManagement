@@ -42,8 +42,6 @@ public class ExpenseControllerTest {
 
         verify(expenseService, times(1)).getAll();
 
-        answer.getBody().stream().forEach(
-                expense -> Asserts.assertExpense(expense));
     }
 
     @Test
@@ -84,9 +82,6 @@ public class ExpenseControllerTest {
         ResponseEntity<List<Expense>> answer = expenseController.getByDescription("description");
 
         assertEquals(2 , answer.getBody().size());
-
-        answer.getBody().stream().forEach(
-                expense -> Asserts.assertExpense(expense));
 
     }
 
