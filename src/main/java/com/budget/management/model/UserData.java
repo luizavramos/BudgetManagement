@@ -3,6 +3,8 @@ package com.budget.management.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import javax.persistence.*;
@@ -14,6 +16,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_user_data")
+@Getter
+@Setter
 public class UserData {
 
     @Id
@@ -51,53 +55,7 @@ public class UserData {
     public UserData() {
     }
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public List<Expense> getExpense() {
-		return expense;
-	}
-
-	public void setExpense(List<Expense> expense) {
-		this.expense = expense;
-	}
-
-	public List<Income> getIncome() {
-		return income;
-	}
-
-	public void setIncome(List<Income> income) {
-		this.income = income;
-	}
     
     
 }
