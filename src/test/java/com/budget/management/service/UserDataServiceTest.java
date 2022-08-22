@@ -83,16 +83,5 @@ class UserDataServiceTest {
         assertThrows(ResponseStatusException.class, () -> service.updateUser(Mocks.getUserData()));
     }
 
-//    @Test
-//    void loginUser() {
-//
-//        when(repository.findByUser(anyString()))
-//                .thenReturn(Optional.of(Mocks.getUserData()));
-//
-//        Optional<UserLogin> answer = service.loginUser(Optional.of(Mocks.getUserLogin()));
-//
-//        verify(repository, times(1)).findByUser(userData.getUser());
-//
-//
-//    }
+
 }
