@@ -16,8 +16,12 @@ import java.util.Optional;
 @Service
 public class UserDataService {
 
-    @Autowired
+
     private UserDataRepository userDataRepository;
+
+    public UserDataService(UserDataRepository userDataRepository) {
+        this.userDataRepository = userDataRepository;
+    }
 
     public Optional<UserData> registerUser(UserData userData) {
         if (userDataRepository.findByUser(userData.getUser())
@@ -48,6 +52,7 @@ public class UserDataService {
             Optional<UserLogin> userLogin) {
         Optional<UserData> userData = userDataRepository
                 .findByUser(userLogin.get().getUser());
+
         if (userData.isPresent()) {
             if (comparePassword(userLogin.get().getPassword(),
                     userData.get().getPassword())) {
@@ -60,6 +65,7 @@ public class UserDataService {
                 return userLogin;
             }
         }
+
         throw new ResponseStatusException(
                 HttpStatus.UNAUTHORIZED, "User or password is invalid!", null);
     }

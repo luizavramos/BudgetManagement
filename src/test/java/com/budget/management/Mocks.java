@@ -16,7 +16,7 @@ public class Mocks {
         return new UserData(0L, "name","user", "password");
     }
     public static UserLogin getUserLogin(){
-        return new UserLogin(0L, "name", "user", "Password", "token");
+        return new UserLogin(0L, "name", "user", "password", "token");
     }
 
     public static Income getIncome(){
