@@ -11,12 +11,12 @@ public class UserDetailsImpl implements UserDetails {
 
     private static final long serialVersionUID =1L;
     private String userName;
-    private String password;
+    private String password1;
     private List<GrantedAuthority> authorities;
 
-    public UserDetailsImpl (UserData user){
-        this.userName = user.getUser();
-        this.password = user.getPassword();
+    public UserDetailsImpl (UserData user1){
+        this.userName = user1.getUser();
+        this.password1 = user1.getPassword();
     }
     public UserDetailsImpl (){}
     @Override
@@ -25,7 +25,7 @@ public class UserDetailsImpl implements UserDetails {
     }
     @Override
     public String getPassword() {
-        return password;
+        return password1;
     }
     @Override
     public String getUsername() {

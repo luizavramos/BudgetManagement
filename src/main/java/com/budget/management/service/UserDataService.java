@@ -5,6 +5,7 @@ import com.budget.management.model.UserLogin;
 import com.budget.management.repository.UserDataRepository;
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -68,19 +69,18 @@ public class UserDataService {
                 HttpStatus.UNAUTHORIZED, "User or password is invalid!", null);
     }
     private String encryptPassword(String password) {
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        String passwordEncoder = encoder.encode(password);
-//        return passwordEncoder;
-        return password;
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String passwordEncoder = encoder.encode(password);
+       return passwordEncoder;
+
     }
     private boolean comparePassword(String typedPassword,
                                    String databasePassword) {
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-//        return encoder.matches(typedPassword, databasePassword);
-        return true;
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder.matches(typedPassword, databasePassword);
     }
-    private String generateBasicToken(String email, String password) {
-        String structure = email + ":" + password;
+    private String generateBasicToken(String user, String password) {
+        String structure = user + ":" + password;
         byte[] structureBase64 = Base64.encodeBase64(
                 structure.getBytes(Charset.forName("US-ASCII")));
         return "Basic " + new String(structureBase64);
