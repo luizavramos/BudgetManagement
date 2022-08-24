@@ -3,8 +3,6 @@ package com.budget.management.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import lombok.Getter;
-import lombok.Setter;
 
 
 import javax.persistence.*;
@@ -32,7 +30,7 @@ public class UserData {
 
     @NotBlank(message = "The property password is required.")
     @Size(min = 8, message = "The password must be at least 8 characters")
-    private String password;
+    private String secret;
 
     @OneToMany(mappedBy = "userData", cascade = CascadeType.REMOVE)
     @JsonIgnoreProperties("userData")
@@ -43,11 +41,11 @@ public class UserData {
     private List<Income> income;
 
 
-    public UserData(Long id, String name, String user, String password) {
+    public UserData(Long id, String name, String user, String secret) {
         this.id = id;
         this.name = name;
         this.user = user;
-        this.password = password;
+        this.secret = secret;
     }
 
     public UserData() {
@@ -78,12 +76,12 @@ public class UserData {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getSecret() {
+        return secret;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setSecret(String secret) {
+        this.secret = secret;
     }
 
     public List<Expense> getExpense() {

@@ -27,7 +27,7 @@ public class UserDataService {
                 .isPresent())
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                     "User already exists", null);
-        userData.setPassword(encryptPassword(userData.getPassword()));
+        userData.setSecret(encryptPassword(userData.getSecret()));
         return Optional.of(userDataRepository.save(userData));
     }
 
@@ -40,7 +40,7 @@ public class UserDataService {
                     throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
                             "User already exists!", null);
             }
-            userData.setPassword(encryptPassword(userData.getPassword()));
+            userData.setSecret(encryptPassword(userData.getSecret()));
             return Optional.of(userDataRepository.save(userData));
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND,
@@ -53,14 +53,14 @@ public class UserDataService {
                 .findByUser(userLogin.get().getUser());
 
         if (userData.isPresent()) {
-            if (comparePassword(userLogin.get().getPassword(),
-                    userData.get().getPassword())) {
+            if (comparePassword(userLogin.get().getSecret(),
+                    userData.get().getSecret())) {
                 userLogin.get().setId(userData.get().getId());
                 userLogin.get().setName(userData.get().getName());
                 userLogin.get().setToken(
                         generateBasicToken(userLogin.get().getUser(),
-                                userLogin.get().getPassword()));
-                userLogin.get().setPassword(userData.get().getPassword());
+                                userLogin.get().getSecret()));
+                userLogin.get().setSecret(userData.get().getSecret());
                 return userLogin;
             }
         }
